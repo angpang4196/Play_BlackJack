@@ -33,7 +33,7 @@ public class MakeCardService {
 	}
 
 	/*
-	 * 카드의 숫자 (2 ~ 10 )를 생성해서 String형 리스트 numList에 저장하는 method
+	 * 카드의 숫자 (2 ~ 10)를 생성해서 String형 리스트 numList에 저장하는 method
 	 */
 	public void makeNum() {
 		/*
@@ -68,7 +68,7 @@ public class MakeCardService {
 	}
 
 	/*
-	 * 모양과 숫자을 조합해서 전체 카드를 만들어내는 method
+	 * 모양과 숫자을 조합해서 카드를 만들어내는 method
 	 */
 	public void makeNumCard() {
 		/*
@@ -108,7 +108,7 @@ public class MakeCardService {
 	 */
 	public void randomCard() {
 		/*
-		 * for문을 이용해 cardList에 담긴 52장의 카드들을 10번 섞기
+		 * for문을 이용해 cardList에 담긴 52장의 카드들을 10번 섞기 10은 임의로 본인이 설정한 값
 		 */
 		for (int i = 0; i < 10; i++) {
 			Collections.shuffle(cardList);
@@ -127,9 +127,17 @@ public class MakeCardService {
 		 * for문을 이용해서 번갈아가면서 짝수번째는 딜러카드로, 홀수번째는 플레이어카드로 저장
 		 */
 		for (int i = 0; i < intSize; i++) {
+
+			/*
+			 * 섞인 전체 카드중 0,2,4...짝수번째 카드는 딜러카드리스트에 저장
+			 */
 			if (i % 2 == 0) {
 				dealerCList.add(cardList.get(i));
 			}
+
+			/*
+			 * 섞인 전체 카드중 1,3,5...홀수번째 카드는 플레이어카드리스트에 저장
+			 */
 			if (i % 2 != 0) {
 				playerCList.add(cardList.get(i));
 			}
@@ -140,11 +148,9 @@ public class MakeCardService {
 	 * console에 게임시작을 알려주는 method
 	 */
 	public void gameStart() {
-
 		System.out.println("==================================================================");
 		System.out.println("1 대 1 블랙잭 게임 시작");
 		System.out.println("------------------------------------------------------------------");
-
 	}
 
 	/*
@@ -176,7 +182,7 @@ public class MakeCardService {
 		/*
 		 * 플레이어가 받은 두 장의 점수를 console에 표시
 		 */
-		System.out.println("현재 플레이어의 점수는 " + intPFScore + "입니다.");
+		System.out.println("현재 플레이어의 점수는 " + intPFScore + "점입니다.");
 	}
 
 	/*
@@ -281,28 +287,18 @@ public class MakeCardService {
 				System.out.println("21점을 초과했으므로 딜러 승");
 
 				/*
-				 * 21점초과가 되면 그 21점 초과가 된 점수를 overScore() method의 매개변수로 전달해주고 return받은 0을 
-				 * main method로 다시 return해 주게 된다.
+				 * 21점초과가 되면 getPCard() method를 호출한 0값으로 return 
 				 */
-				return this.overScore(intPlayerScore);
+				return 0;
 			}
 
 			/*
-			 * 21점이 초과가 되지 않았다면 1을 이 method를 호출한 main method로 return하게 되는데 return 값을 1로 설정한 이유는
-			 * 인덱스를 1씩 증가시키기위해 return해 주는 값을 1로 설정하였다.
+			 * 21점이 초과가 되지 않았다면 1을 이 method를 호출한 main method로 return하게 되는데 return 값을 1로 설정한
+			 * 이유는 인덱스를 1씩 증가시키기위해 return해 주는 값을 1로 설정하였다.
 			 */
 			return 1;
 		}
 		return 1;
-	}
-	
-	/*
-	 * overScore() method가 getPCard() method에서 전달한 매개변수를 받고 0을 return해 주는 method
-	 * 설명 : getPCard() method에서 플레이어가 얻은 카드의 점수까지 합해서 21점을 넘었을 때 이 method로 그 점수를 
-	 * 	      매개변수로 보내주게 된다. 
-	 */
-	public int overScore(int intOverScore) {
-		return 0;
 	}
 
 	/*
