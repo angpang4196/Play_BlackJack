@@ -88,6 +88,7 @@ public class PlayBlackJack_Exec {
 				 */
 				break;
 			}
+
 			if (intWrite == 1) {
 
 				/*
@@ -102,11 +103,11 @@ public class PlayBlackJack_Exec {
 				int intScore = mcs.getPCard(intIndex);
 
 				/*
-				 * 위의 return받은 값이 0이라는 말은 service 클래스에 가보면 알겠지만 플레이어가 얻은 카드까지 점수를 합해서 점수가 21점이
-				 * 초과했을 때 0을 return하게 했다. 그래서 그 return받은 값이 0 이면 바로 딜러가 이긴 결과이기 때문에 break를
+				 * 위의 return받은 값이 0보다 작다는 말은 service 클래스에 가보면 알겠지만 플레이어가 얻은 카드까지 점수를 합해서 점수가 21점이
+				 * 초과했을 때 -1 을 return하게 했다. 그래서 그 return받은 값이 0보다 작으면 바로 딜러가 이긴 결과이기 때문에 break를
 				 * 걸어주었다.
 				 */
-				if (intScore == 0) {
+				if (intScore < 0) {
 					break;
 				}
 

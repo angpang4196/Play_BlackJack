@@ -84,6 +84,7 @@ public class MakeCardService {
 				 * 위에서 만든 String형 변수 strNumCard 들을 cardList에 저장
 				 */
 				cardList.add(strNumCard);
+
 			}
 		}
 	}
@@ -251,54 +252,56 @@ public class MakeCardService {
 	 * main method에서 추가로 카드를 받고싶으면 실행되는 method 매개변수 intIndex는 main에서 전달
 	 */
 	public int getPCard(int intIndex) {
-
+		
 		/*
-		 * 카드를 한 장얻고나면 다음 순서의 카드를 얻기위해 for문을 이용 main에서 전달받은 intIndex는 2부터 1씩 증가
+		 * console에 플레이어가 한 장의 카드를 얻는다는 메세지와 얻은 카드의 정보를 표시
 		 */
-		for (int i = intIndex; i < 15; i++) {
-
+		System.out.println("플레이어는 한 장의 카드를 더 얻습니다.");
+		System.out.println("얻은 카드는 " + playerCList.get(intIndex) + "입니다.");
+	
+		/*
+		 * intPlayerScore라는 변수는 플레이어가 카드를 얻고 그 카드의 점수까지 더한 값을 저장할 변수 
+		 */
+		int intPlayerScore = 0;
+		
+		/*
+		 * for문을 이용해서 플레이어의 첫번째 카드부터 받은만큼 카드의 점수를 더 해줌
+		 */
+		for (int i = 0; i <= intIndex; i++) {
+			
 			/*
-			 * console에 플레이어가 한 장의 카드를 얻는다는 메세지와 얻은 카드의 정보를 표시
-			 */
-			System.out.println("플레이어는 한 장의 카드를 더 얻습니다.");
-			System.out.println("얻은 카드는 " + playerCList.get(i) + "입니다.");
-
-			/*
-			 * int형 변수 intPlayerScore에 플레이어가 처음에 받은 두 장의 카드의 점수를 합하여 저장 makeScore()에 매개변수로 두
-			 * 장의 카드의 정보를 전달
-			 */
-			int intPlayerScore = makeScore(playerCList.get(0)) + makeScore(playerCList.get(1));
-
-			/*
-			 * 처음 받은 두장의 점수에 추가로 받은 카드의 점수를 더해주는 코드 마찬가지로 makeScore에 플레이어가 추가로 받은 카드 정보를
-			 * 매개변수로 전달해주고 return받은 값을 더해줌
+			 * += 을 이용해서 0번째 점수부터 intIndex번째 점수까지 더해주고 for문을 빠져나오게 된다.
 			 */
 			intPlayerScore += makeScore(playerCList.get(i));
-
-			/*
-			 * return받은 값(점수)를 플레이어의 점수리스트에 추가
-			 */
-			pScoreList.add(makeScore(playerCList.get(i)));
-
-			/*
-			 * 추가로 받은 카드의 점수까지 합했을 때 21이 넘으면 자동으로 딜러가 이기는 결과가 된다.
-			 */
-			if (intPlayerScore > 21) {
-				System.out.println("21점을 초과했으므로 딜러 승");
-
-				/*
-				 * 21점초과가 되면 getPCard() method를 호출한 0값으로 return 
-				 */
-				return 0;
-			}
-
-			/*
-			 * 21점이 초과가 되지 않았다면 1을 이 method를 호출한 main method로 return하게 되는데 return 값을 1로 설정한
-			 * 이유는 인덱스를 1씩 증가시키기위해 return해 주는 값을 1로 설정하였다.
-			 */
-			return 1;
 		}
+		
+		/*
+		 * 위의 for문을 빠져나온 플레이어의 점수를 console에 표시해줌
+		 */
+		System.out.println("현재까지 플레이어의 점수는 " + intPlayerScore + "점입니다.");
+		/*
+		 * return받은 값(점수)를 플레이어의 점수리스트에 추가
+		 */
+		pScoreList.add(makeScore(playerCList.get(intIndex)));
+
+		/*
+		 * for문을 빠져나온 추가로 받은 카드의 점수까지 합했을 때 21이 넘으면 자동으로 딜러가 이기는 결과가 된다.
+		 */
+		if (intPlayerScore > 21) {
+			System.out.println("21점을 초과했으므로 딜러 승");
+
+			/*
+			 * 21점초과가 되면 getPCard() method를 호출한 -1 값으로 return
+			 */
+			return -1;
+		}
+
+		/*
+		 * 21점이 초과가 되지 않았다면 1을 이 method를 호출한 main method로 return하게 되는데 return 값을 1로 설정한
+		 * 이유는 인덱스를 1씩 증가시키기위해 return해 주는 값을 1로 설정하였다.
+		 */
 		return 1;
+
 	}
 
 	/*
