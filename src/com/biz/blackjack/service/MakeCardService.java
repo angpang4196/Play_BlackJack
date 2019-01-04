@@ -264,10 +264,13 @@ public class MakeCardService {
 		 * intPlayerScore라는 변수는 플레이어가 카드를 얻고 그 카드의 점수까지 더한 값을 저장할 변수 
 		 */
 		int intPlayerScore = 0;
-
+		
+		/*
+		 * 첫 두장과 추가로 받은 카드의 정보를 console에 표시해주는 코드
+		 */
 		System.out.print("현재까지 플레이어의 카드는 ");
 		/*
-		 * for문을 이용해서 플레이어의 첫번째 카드부터 받은만큼 카드의 점수를 더 해줌
+		 * for문을 이용해서 플레이어의 첫번째 카드부터 받은만큼 카드를 알려주고 카드들의 점수를 더 해줌
 		 */
 		for (int i = 0; i <= intIndex; i++) {
 			
