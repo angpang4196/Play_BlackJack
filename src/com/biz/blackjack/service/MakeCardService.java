@@ -250,7 +250,7 @@ public class MakeCardService {
 	}
 
 	/*
-	 * main method에서 추가로 카드를 받고싶으면 실행되는 method 매개변수 intIndex는 main에서 전달
+	 * main method에서 추가로 카드를 받고싶으면 실행되는 method, 매개변수 intIndex는 main에서 전달
 	 */
 	public int getPCard(int intIndex) {
 

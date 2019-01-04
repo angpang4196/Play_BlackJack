@@ -37,7 +37,8 @@ public class PlayBlackJack_Exec {
 		Scanner scan = new Scanner(System.in);
 
 		/*
-		 * MakeCardService 클래스의 getPCard()에 매개변수로 인덱스 값을 전달하기위해 선언 및 2로 저장 2로 저장한 이유는
+		 * MakeCardService 클래스의 getPCard()에 매개변수로 인덱스 값을 전달하기위해 선언 및 2로 
+		 * 저장 2로 저장한 이유는
 		 * 0번째와 1번째는 이미 초기에 저장이 되어있기 때문에 2번째부터 저장하기위해
 		 */
 		int intIndex = 2;
