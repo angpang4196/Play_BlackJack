@@ -167,8 +167,8 @@ public class MakeCardService {
 		/*
 		 * 플레이어가 받은 두 장의 정보를 console에 표시
 		 */
-		System.out.println("플레이어가 받은 카드 두 장은 " + "[ " + playerCList.get(0) + " ]" + 
-					"[ " +playerCList.get(1) + " ]" + "입니다.");
+		System.out.println(
+				"플레이어가 받은 카드 두 장은 " + "[ " + playerCList.get(0) + " ]" + "[ " + playerCList.get(1) + " ]" + "입니다.");
 
 		/*
 		 * 플레이어가 처음에 받은 두장의 정보를 makeScore()의 매개변수로 보내서 리턴받은 값(점수)를 int형 변수 intPFScore에
@@ -253,18 +253,18 @@ public class MakeCardService {
 	 * main method에서 추가로 카드를 받고싶으면 실행되는 method 매개변수 intIndex는 main에서 전달
 	 */
 	public int getPCard(int intIndex) {
-		
+
 		/*
 		 * console에 플레이어가 한 장의 카드를 얻는다는 메세지와 얻은 카드의 정보를 표시
 		 */
 		System.out.println("플레이어는 한 장의 카드를 더 얻습니다.");
 		System.out.println("얻은 카드는 " + "[ " + playerCList.get(intIndex) + " ]" + "입니다.");
-	
+
 		/*
-		 * intPlayerScore라는 변수는 플레이어가 카드를 얻고 그 카드의 점수까지 더한 값을 저장할 변수 
+		 * intPlayerScore라는 변수는 플레이어가 카드를 얻고 그 카드의 점수까지 더한 값을 저장할 변수
 		 */
 		int intPlayerScore = 0;
-		
+
 		/*
 		 * 첫 두장과 추가로 받은 카드의 정보를 console에 표시해주는 코드
 		 */
@@ -273,16 +273,16 @@ public class MakeCardService {
 		 * for문을 이용해서 플레이어의 첫번째 카드부터 받은만큼 카드를 알려주고 카드들의 점수를 더 해줌
 		 */
 		for (int i = 0; i <= intIndex; i++) {
-			
+
 			System.out.print("[ " + playerCList.get(i) + " ]");
 			/*
 			 * += 을 이용해서 0번째 점수부터 intIndex번째 점수까지 더해주고 for문을 빠져나오게 된다.
 			 */
 			intPlayerScore += makeScore(playerCList.get(i));
 		}
-		
+
 		System.out.println("입니다.");
-		
+
 		/*
 		 * 위의 for문을 빠져나온 플레이어의 점수를 console에 표시해줌
 		 */
@@ -416,9 +416,9 @@ public class MakeCardService {
 				System.out.println("결과 : 딜러 승");
 				break;
 			}
-			
+
 			// 플레이어와 딜러 모두 21점일 때
-			if(intPGap == 0 && intDGap == 0) {
+			if (intPGap == 0 && intDGap == 0) {
 				System.out.println("결과 : DRAW");
 				break;
 			}
@@ -442,16 +442,16 @@ public class MakeCardService {
 				break;
 			}
 
-			// 딜러와 플레이어 점수 모두 21점보다 작을 때
+			// 딜러와 플레이어 점수 모두 21점보다 낮을 때
 			if (intDGap < 0 && intPGap < 0) {
 
-				// 딜러의 점수가 21점보다 더 가까울 때
+				// 딜러의 점수가 21점에 더 가까울 때
 				if (intDGap > intPGap) {
 					System.out.println("결과 : 딜러 승");
 					break;
 				}
 
-				// 플레이어의 점수가 21점보다 더 가까울 때
+				// 플레이어의 점수가 21점에 더 가까울 때
 				if (intDGap < intPGap) {
 					System.out.println("결과 : 플레이어 승");
 					break;
