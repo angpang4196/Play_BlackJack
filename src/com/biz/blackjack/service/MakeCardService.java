@@ -162,12 +162,13 @@ public class MakeCardService {
 		/*
 		 * 딜러의 오픈된 한 장의 정보를 console에 표시
 		 */
-		System.out.println("딜러의 카드 한 장은 " + dealerCList.get(0) + "입니다.");
+		System.out.println("딜러의 카드 한 장은 " + "[ " + dealerCList.get(0) + " ]" + "입니다.");
 
 		/*
 		 * 플레이어가 받은 두 장의 정보를 console에 표시
 		 */
-		System.out.println("플레이어가 받은 카드 두 장은 " + playerCList.get(0) + ", " + playerCList.get(1) + "입니다.");
+		System.out.println("플레이어가 받은 카드 두 장은 " + "[ " + playerCList.get(0) + " ]" + 
+					"[ " +playerCList.get(1) + " ]" + "입니다.");
 
 		/*
 		 * 플레이어가 처음에 받은 두장의 정보를 makeScore()의 매개변수로 보내서 리턴받은 값(점수)를 int형 변수 intPFScore에
@@ -194,7 +195,7 @@ public class MakeCardService {
 		/*
 		 * 딜러의 오픈되지않은 카드의 정보를 오픈하면서 console에 표시
 		 */
-		System.out.println("딜러의 다른 한 장은 " + dealerCList.get(1) + "입니다.");
+		System.out.println("딜러의 다른 한 장은 " + "[ " + dealerCList.get(1) + " ]" + "입니다.");
 
 		/*
 		 * 딜러의 첫 두 장의 점수를 구하는 부분 첫번째 카드와 두번째카드의 정보를 makeScore()에 매개변수로 전달해서 리턴받은 값(점수)를
@@ -227,7 +228,7 @@ public class MakeCardService {
 				 * 점수합이 16점이하라면 한 장을 더 받는다는 메세지와 그 받은 카드의 정보를 console에 표시
 				 */
 				System.out.println("딜러의 점수가 16점 이하이므로 카드 한 장을 더 받습니다.");
-				System.out.println("딜러가 추가로 받은 카드는 " + dealerCList.get(i) + "입니다.");
+				System.out.println("딜러가 추가로 받은 카드는 " + "[ " + dealerCList.get(i) + " ]" + "입니다.");
 
 				/*
 				 * 추가로 받은 카드의 점수를 makeScore()에 매개변수로 전달하여 return받은 값을 intDFScore에 추가 저장
@@ -257,23 +258,27 @@ public class MakeCardService {
 		 * console에 플레이어가 한 장의 카드를 얻는다는 메세지와 얻은 카드의 정보를 표시
 		 */
 		System.out.println("플레이어는 한 장의 카드를 더 얻습니다.");
-		System.out.println("얻은 카드는 " + playerCList.get(intIndex) + "입니다.");
+		System.out.println("얻은 카드는 " + "[ " + playerCList.get(intIndex) + " ]" + "입니다.");
 	
 		/*
 		 * intPlayerScore라는 변수는 플레이어가 카드를 얻고 그 카드의 점수까지 더한 값을 저장할 변수 
 		 */
 		int intPlayerScore = 0;
-		
+
+		System.out.print("현재까지 플레이어의 카드는 ");
 		/*
 		 * for문을 이용해서 플레이어의 첫번째 카드부터 받은만큼 카드의 점수를 더 해줌
 		 */
 		for (int i = 0; i <= intIndex; i++) {
 			
+			System.out.print("[ " + playerCList.get(i) + " ]");
 			/*
 			 * += 을 이용해서 0번째 점수부터 intIndex번째 점수까지 더해주고 for문을 빠져나오게 된다.
 			 */
 			intPlayerScore += makeScore(playerCList.get(i));
 		}
+		
+		System.out.println("입니다.");
 		
 		/*
 		 * 위의 for문을 빠져나온 플레이어의 점수를 console에 표시해줌
@@ -406,6 +411,12 @@ public class MakeCardService {
 			// 플레이어 점수가 21을 초과했을 때
 			if (intPGap > 0) {
 				System.out.println("결과 : 딜러 승");
+				break;
+			}
+			
+			// 플레이어와 딜러 모두 21점일 때
+			if(intPGap == 0 && intDGap == 0) {
+				System.out.println("결과 : DRAW");
 				break;
 			}
 
