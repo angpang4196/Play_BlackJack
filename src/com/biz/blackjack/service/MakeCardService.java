@@ -340,16 +340,8 @@ public class MakeCardService {
 		if (strCode.equals("A")) {
 			return 1;
 		}
-		// 뒷 글자가 J일 경우 10점을 리턴
-		if (strCode.equals("J")) {
-			return 10;
-		}
-		// 뒷 글자가 Q일 경우 10점을 리턴
-		if (strCode.equals("Q")) {
-			return 10;
-		}
-		// 뒷 글자가 K일 경우 10점을 리턴
-		if (strCode.equals("K")) {
+		// 뒷 글자가 J, Q, K일 경우 10점을 리턴
+		if (strCode.equals("J") || strCode.equals("Q") || strCode.equals("K")) {
 			return 10;
 		}
 		/*
